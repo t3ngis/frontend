@@ -46,7 +46,7 @@ const Page = () => {
       const imageURL = uploaded.url;
       setImageUrl(imageURL);
     } catch {
-      error;
+      console.log("aldaa garlaa");
     }
   };
 

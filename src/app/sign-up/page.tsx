@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import { toast } from "sonner";
 
 const Page = () => {
   const [inputValue, setInputValue] = useState({
@@ -43,13 +44,19 @@ const Page = () => {
         username: inputValue.username,
       }),
     });
-    const user2 = res.json();
-    localStorage.setItem("user", JSON.stringify(user2));
+    if (res.ok) {
+      const user2 = res.json();
+      localStorage.setItem("user", JSON.stringify(user2));
+      toast.success("amjilttai nevterle bayr hurgi");
+      router.push("/");
+    } else {
+      toast.error("aldaa garla");
+    }
   };
 
   const handleClick = () => {
     router.push("../login");
-  }
+  };
 
   return (
     <div>

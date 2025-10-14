@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/Provider/AuthProvider";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const Page = () => {
-  const { setUser, user } = useUser();
+  const { user, setToken } = useUser();
   const router = useRouter();
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -24,13 +25,16 @@ const Page = () => {
         password: inputValue.password,
       }),
     });
-    console.log(res);
+
     if (res.ok) {
-      router.push("../");
+      const token = await res.json();
+      setToken(token);
+      localStorage.setItem("token", token);
+      router.push("/");
+      toast.success("success");
+    } else {
+      toast.error("failed");
     }
-    const user2 = await res.json();
-    localStorage.setItem("user", JSON.stringify(user2));
-    setUser(user);
   };
 
   const handleValue = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +48,7 @@ const Page = () => {
         return { ...prev, password: value };
       });
     }
-  }
+  };
 
   return (
     <div>

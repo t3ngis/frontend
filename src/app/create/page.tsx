@@ -1,15 +1,22 @@
 "use client";
 
 import { upload } from "@vercel/blob/client";
-import { error } from "console";
+import { Input } from "@/components/ui/input";
 import { ChangeEvent, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useUser } from "@/Provider/AuthProvider";
+import { useRouter } from "next/navigation";
+import { Images } from "lucide-react";
+import { toast } from "sonner";
 
 const Page = () => {
   const [promt, setPromt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const { token } = useUser();
+  const router = useRouter();
 
-  const apiKey = process.env.apiKey;
+  const apiKey = process.env.HPI_Key
   const ganerateImage = async () => {
     if (!promt.trim()) return;
     setLoading(true);
@@ -34,6 +41,7 @@ const Page = () => {
           }),
         }
       );
+
       if (!res.ok) {
         throw new Error(`error status: ${res.status}`);
       }
@@ -49,6 +57,25 @@ const Page = () => {
       console.log("aldaa garlaa");
     }
   };
+  const createPost = async () => {
+    const res = await fetch("http://localhost:3333/post/create", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        caption: promt,
+        images: [imageUrl],
+      }),
+    });
+    if (res.ok) {
+      toast.success("lucky");
+      router.push("/");
+    } else {
+      toast.error("unlucky");
+    }
+  };
 
   const handleValue = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -57,16 +84,19 @@ const Page = () => {
 
   return (
     <div>
-      <div>Ai Image Generator</div>
-      <input
+      <div className="flex justify-center">Ai Image Generator</div>
+      <Input
         placeholder="зургаа оруулана уу"
         onChange={(e) => handleValue(e)}
       />
       <div>
-        <button onClick={ganerateImage}>Generate image</button>
+        <Button onClick={ganerateImage}>Generate image</Button>
       </div>
       <div>
-        <img className="rounded-2xl" src={imageUrl} alt="" />
+        <Button onClick={createPost}>Create post</Button>
+      </div>
+      <div>
+        <img className="rounded-xl" src={imageUrl} />
       </div>
     </div>
   );

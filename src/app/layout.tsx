@@ -35,3 +35,12 @@ export default function RootLayout({
     </html>
   );
 }
+
+type User = {
+  _id: string;
+  email: string;
+  password: string;
+  username: string;
+  bio: string | null;
+  profilePicture: string | null;
+};

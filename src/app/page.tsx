@@ -1,5 +1,4 @@
-"use client";
-
-export default function Home() {
-  return <div>hello</div>;
-}
+const Page = async () => {
+  return <div>instagram</div>;
+};
+export default Page;

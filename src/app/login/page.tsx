@@ -28,6 +28,7 @@ const Page = () => {
 
     if (res.ok) {
       const token = await res.json();
+      console.log(token, "token");
       setToken(token);
       localStorage.setItem("token", token);
       router.push("/");

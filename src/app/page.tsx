@@ -1,4 +1,6 @@
 const Page = async () => {
-  return <div>instagram</div>;
+  return <div>
+    <div>instagram</div>
+  </div>;
 };
 export default Page;

@@ -59,26 +59,30 @@ const Page = () => {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center flex-col bg-gray-50 mt-50 ">
       <Input
         placeholder="email"
         name="email"
         onChange={(e) => handleValue(e)}
+        className="w-60"
       />
       <Input
         placeholder="password"
         name="password"
         onChange={(e) => handleValue(e)}
+        className="w-60"
       />
       <Input
         placeholder="username"
         name="username"
         onChange={(e) => handleValue(e)}
+        className="w-60"
       />
-      <div className="flex flex-col">
-        <Button onClick={signUp}>sign up</Button>
-        <button onClick={handleClick}>login</button>
-      </div>
+      
+        <Button onClick={signUp}  className="w-60 bg-blue-500 text-white hover:bg-blue-600">sign up</Button>
+        <div className="px-3 text-gray-500 text-sm" >or</div>
+        <button onClick={handleClick}>Already have an account! login</button>
+      
     </div>
   );
 };

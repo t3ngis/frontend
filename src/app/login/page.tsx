@@ -50,24 +50,29 @@ const Page = () => {
       });
     }
   };
+  const signUp = () =>{
+    router.push("../sign-up")
+  }
 
   return (
-    <div>
+    <div className="flex items-center justify-center flex-col bg-gray-50 mt-50 ">
       <Input
-        className="w-100 "
+        className="w-60 "
         placeholder="email"
         name="email"
         onChange={(e) => handleValue(e)}
       />
       <Input
         placeholder="password"
-        className="w-100"
+        className="w-60"
         name="password"
         onChange={(e) => handleValue(e)}
       />
-      <Button onClick={login} className="w-100">
+      <Button onClick={login} className="w-60 bg-blue-500 text-white hover:bg-blue-600">
         login
       </Button>
+      <div className="px-3 text-gray-500 text-sm">or</div>
+      <button onClick={signUp}> Don't have an account? sign up</button>
     </div>
   );
 };

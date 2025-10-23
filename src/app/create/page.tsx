@@ -95,9 +95,7 @@ const Page = () => {
       <div>
         <Button onClick={createPost}>Create post</Button>
       </div>
-      <div>
-        <img className="rounded-xl" src={imageUrl} />
-      </div>
+      
     </div>
   );
 };

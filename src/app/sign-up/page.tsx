@@ -44,15 +44,17 @@ const Page = () => {
         username: inputValue.username,
       }),
     });
+
     if (res.ok) {
-      const user2 = res.json();
-      localStorage.setItem("user", JSON.stringify(user2));
+      const token = await res.json();
+      localStorage.setItem("token", JSON.stringify(token));
       toast.success("amjilttai nevterle bayr hurgi");
       router.push("/");
     } else {
       toast.error("aldaa garla");
     }
   };
+
 
   const handleClick = () => {
     router.push("../login");

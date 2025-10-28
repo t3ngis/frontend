@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
 import { useUser } from "@/Provider/AuthProvider";
+
 import { useEffect, useState } from "react";
+import { Footerr } from "./_components/Footerr";
 
 const Page = () => {
   const [posts, setPosts] = useState([]);
@@ -20,8 +22,7 @@ const Page = () => {
         });
 
         const res = await response.json();
-        console.log("Response:", res);
-        setPosts(res.posts || []);
+        setPosts(res);
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -29,11 +30,12 @@ const Page = () => {
 
     getPosts();
   }, [token]);
-
+  console.log(posts);
   return (
-    <div>
-      <div>instagram</div>
-    
+    <div className=" h-screen">
+      <div className="py-[12px] px-[16px] border-b-[1px]">
+        <img src="/instagram.png" alt="" />
+      </div>
     </div>
   );
 };

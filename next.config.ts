@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    HPI_Key:process.env.HPI_Key
+  }
 };
 
 export default nextConfig;

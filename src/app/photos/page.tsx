@@ -1,8 +1,11 @@
-const Photos = ( ) =>{
+import { Footerr } from "../_components/Footerr";
 
-    return(
-        <div>de</div>
-    )
-
-}
-export default Photos
+const Photos = () => {
+  return (
+    <div>
+      de
+      <Footerr />   
+    </div>
+  );
+};
+export default Photos;

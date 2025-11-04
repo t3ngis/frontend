@@ -55,13 +55,13 @@ const Page = () => {
     }
   };
 
-
   const handleClick = () => {
     router.push("../login");
   };
 
   return (
     <div className="flex items-center justify-center flex-col bg-gray-50 mt-50 ">
+      <img src="/logo.png" />
       <Input
         placeholder="email"
         name="email"
@@ -80,11 +80,15 @@ const Page = () => {
         onChange={(e) => handleValue(e)}
         className="w-60"
       />
-      
-        <Button onClick={signUp}  className="w-60 bg-blue-500 text-white hover:bg-blue-600">sign up</Button>
-        <div className="px-3 text-gray-500 text-sm" >or</div>
-        <button onClick={handleClick}>Already have an account! login</button>
-      
+
+      <Button
+        onClick={signUp}
+        className="w-60 bg-blue-500 text-white hover:bg-blue-600"
+      >
+        sign up
+      </Button>
+      <div className="px-3 text-gray-500 text-sm">or</div>
+      <button onClick={handleClick}>Already have an account! login</button>
     </div>
   );
 };

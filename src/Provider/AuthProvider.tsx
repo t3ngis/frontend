@@ -11,7 +11,6 @@ import {
   SetStateAction,
   useContext,
 } from "react";
-import Router from "next/router";
 
 type User = {
   email: string;

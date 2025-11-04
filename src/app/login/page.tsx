@@ -56,6 +56,8 @@ const Page = () => {
 
   return (
     <div className="flex items-center justify-center flex-col bg-gray-50 mt-50 ">
+
+      <img src="/logo.png"/>
       <Input
         className="w-60 "
         placeholder="email"
